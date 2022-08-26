@@ -11,6 +11,30 @@ import { FormattedMessage } from 'react-intl';
 class Login extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            TkEmail:'',
+            TkPass:'',
+            isBool: false,
+        }
+    }
+
+    HandleOnChangeInput = (event) =>{
+        this.setState({
+            TkEmail: event.target.value,
+            TkPass: event.target.value
+        })
+    }
+
+    HandleLogin = () => {
+        console.log('TkEmail: '+this.state.TkEmail);
+        console.log('TkPass: '+this.state.TkPass);
+    }
+
+    HandleShowEyePassword = () => {
+        this.setState({
+            isBool: !this.state.isBool
+        })
+        
     }
 
     render() {
@@ -30,8 +54,6 @@ class Login extends Component {
                                             aria-controls="pills-register" aria-selected="false">Register</a>
                                     </li>
                                 </ul>
-
-
                             </div>
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
@@ -58,23 +80,24 @@ class Login extends Component {
                                         <p class="text-center">or:</p>
 
 
-                                        <div class="form-outline mb-4">
-                                            <input type="email" id="loginName" class="form-control" />
-                                            <label class="form-label" for="loginName">Email or username</label>
+                                        <div class="user-box mb-4">
+                                            <input type="text" id="loginName" class="form-controll" name='TkEmail' onChange={(event) => this.HandleOnChangeInput(event)} required/>
+                                            <label class="form-labell" for="loginName">Email or username</label>
                                         </div>
 
 
-                                        <div class="form-outline mb-4">
-                                            <input type="password" id="loginPassword" class="form-control" />
-                                            <label class="form-label" for="loginPassword">Password</label>
-                                        </div>
-
+                                        <div class="user-box mb-4">
+                                            <input type={this.state.isBool ? 'text' : 'password'} id="loginPassword" class="form-controll" name='TkPass' onChange={(event) => this.HandleOnChangeInput(event)} required/>
+                                            <span className='show-btn' onClick={() => {this.HandleShowEyePassword()}}><i class={this.state.isBool ? 'fa fa-eye' : 'fa fa-eye-slash'}></i></span>
+                                            <label class="form-labell" for="loginPassword">Password</label>
+                                        </div>  
+            
 
                                         <div class="row mb-4">
                                             <div class="col-md-6 d-flex justify-content-center">
 
                                                 <div class="form-check mb-3 mb-md-0">
-                                                    <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+                                                    <input class="form-check-input" type="checkbox" value="" id="loginCheck"  />
                                                     <label class="form-check-label" for="loginCheck"> Remember me </label>
                                                 </div>
                                             </div>
@@ -86,7 +109,7 @@ class Login extends Component {
                                         </div>
 
 
-                                        <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+                                        <button type="submit" class="btn btn-primary btn-block mb-4" onClick={() => {this.HandleLogin()}}>Sign in</button>
 
 
                                         <div class="text-center">
@@ -118,42 +141,36 @@ class Login extends Component {
                                         <p class="text-center">or:</p>
 
 
-                                        <div class="form-outline mb-4">
-                                            <input type="text" id="registerName" class="form-control" />
-                                            <label class="form-label" for="registerName">Name</label>
+                                        <div class="user-box mb-4">
+                                            <input type="text" id="registerName" class="form-controll" name='Name' />
+                                            <label class="form-labell" for="registerName">Name</label>
                                         </div>
 
 
-                                        <div class="form-outline mb-4">
-                                            <input type="text" id="registerUsername" class="form-control" />
-                                            <label class="form-label" for="registerUsername">Username</label>
+                                        <div class="user-box mb-4">
+                                            <input type="text" id="registerUsername" class="form-controll" name='Username'/>
+                                            <label class="form-labell" for="registerUsername">Username</label>
                                         </div>
 
 
-                                        <div class="form-outline mb-4">
-                                            <input type="email" id="registerEmail" class="form-control" />
-                                            <label class="form-label" for="registerEmail">Email</label>
+                                        <div class="user-box mb-4">
+                                            <input type="text" id="registerEmail" class="form-controll" name='Email'/>
+                                            <label class="form-labell" for="registerEmail">Email</label>
                                         </div>
 
 
-                                        <div class="form-outline mb-4">
-                                            <input type="password" id="registerPassword" class="form-control" />
-                                            <label class="form-label" for="registerPassword">Password</label>
+                                        <div class="user-box mb-4">
+                                            <input type="password" id="registerPassword" class="form-controll" name='Password'/>
+                                            <label class="form-labell" for="registerPassword">Password</label>
                                         </div>
 
 
-                                        <div class="form-outline mb-4">
-                                            <input type="password" id="registerRepeatPassword" class="form-control" />
-                                            <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+                                        <div class="user-box mb-4">
+                                            <input type="password" id="registerRepeatPassword" class="form-controll" name='RepeatPassword'/>
+                                            <label class="form-labell" for="registerRepeatPassword">Repeat password</label>
                                         </div>
 
-                                        <div class="form-check d-flex justify-content-center mb-4">
-                                            <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
-                                                aria-describedby="registerCheckHelpText" />
-                                            <label class="form-check-label" for="registerCheck">
-                                                I have read and agree to the terms
-                                            </label>
-                                        </div>
+                                        
 
 
                                         <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
