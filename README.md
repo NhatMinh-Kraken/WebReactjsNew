@@ -70,4 +70,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-components là những cái chung
+components là những cái chung asdas

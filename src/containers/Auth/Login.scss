@@ -2,12 +2,13 @@
     background-color: rgba(206, 241, 245, 0.842);
     border: 0.5px solid rgb(247, 246, 246);
     height: 100vh;
-    overflow:auto;
+    overflow: auto;
     padding: 1.875rem 1.75rem;
+    display: flex;
 }
 
 .login-container {
-    
+
     width: 100%;
     display: flex;
     justify-content: center;
@@ -15,7 +16,7 @@
     margin: 0;
 }
 
-.login-background-header{
+.login-background-header {
     width: 26rem;
 }
 
@@ -34,11 +35,11 @@
     border: 1px solid #fff;
 }
 
-.tab-pane .user-box{
+.tab-pane .user-box {
     position: relative;
 }
 
-.tab-pane .user-box .form-controll{
+.tab-pane .user-box .form-controll {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
@@ -51,9 +52,9 @@
 }
 
 
-.tab-pane .user-box .form-labell{
+.tab-pane .user-box .form-labell {
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
     padding: 10px 0;
     font-size: 16px;
@@ -62,14 +63,15 @@
     transition: .5s;
 }
 
-.tab-pane .user-box .form-controll:focus ~ .form-labell, .tab-pane .user-box .form-controll:valid ~ .form-labell{
+.tab-pane .user-box .form-controll:focus~.form-labell,
+.tab-pane .user-box .form-controll:valid~.form-labell {
     top: -20px;
     left: 0;
     color: rgb(9, 171, 224);
     font-size: 14px;
 }
 
-.user-box .show-btn{
+.user-box .show-btn {
     position: absolute;
     right: 15px;
     top: 40%;
@@ -79,13 +81,13 @@
     display: none;
 }
 
-.user-box .form-controll:valid~.show-btn{
+.user-box .form-controll:valid~.show-btn {
     display: block;
 }
 
 /////
 
-.tab-pane .user-box .form-controlls{
+.tab-pane .user-box .form-controlls {
     width: 100%;
     padding: 10px 10px 0px;
     font-size: 16px;
@@ -98,9 +100,9 @@
 }
 
 
-.tab-pane .user-box .form-labells{
+.tab-pane .user-box .form-labells {
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
     padding: 10px 0;
     font-size: 16px;
@@ -109,12 +111,9 @@
     transition: .5s;
 }
 
-.tab-pane .user-box .form-controlls:focus ~ .form-labells, .tab-pane .user-box .form-controlls:valid ~ .form-labells{
+.tab-pane .user-box .form-controlls:focus~.form-labells,
+.tab-pane .user-box .form-controlls:valid~.form-labells {
     top: -20px;
     left: 0;
     color: rgb(9, 171, 224);
-    font-size: 14px;
-}
-
-
-
+    font
