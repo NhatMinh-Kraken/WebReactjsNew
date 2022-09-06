@@ -1,12 +1,13 @@
 .login-background {
     background-color: rgba(206, 241, 245, 0.842);
-    border: 1px solid rgb(247, 246, 246);
+    border: 0.5px solid rgb(247, 246, 246);
     height: 100vh;
-    display: flex;
+    overflow:auto;
+    padding: 1.875rem 1.75rem;
 }
 
 .login-container {
-    padding: 1.875rem 1.75rem;
+    
     width: 100%;
     display: flex;
     justify-content: center;
@@ -81,3 +82,39 @@
 .user-box .form-controll:valid~.show-btn{
     display: block;
 }
+
+/////
+
+.tab-pane .user-box .form-controlls{
+    width: 100%;
+    padding: 10px 10px 0px;
+    font-size: 16px;
+    color: rgb(10, 9, 9);
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+
+.tab-pane .user-box .form-labells{
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: rgb(9, 171, 224);
+    pointer-events: none;
+    transition: .5s;
+}
+
+.tab-pane .user-box .form-controlls:focus ~ .form-labells, .tab-pane .user-box .form-controlls:valid ~ .form-labells{
+    top: -20px;
+    left: 0;
+    color: rgb(9, 171, 224);
+    font-size: 14px;
+}
+
+
+

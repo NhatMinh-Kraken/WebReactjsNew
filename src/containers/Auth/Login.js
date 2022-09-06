@@ -142,36 +142,33 @@ class Login extends Component {
 
 
                                         <div class="user-box mb-4">
-                                            <input type="text" id="registerName" class="form-controll" name='Name' />
-                                            <label class="form-labell" for="registerName">Name</label>
+                                            <input type="text" id="registerName" class="form-controlls" name='Name' />
+                                            <label class="form-labells" for="registerName">Name</label>
                                         </div>
 
 
                                         <div class="user-box mb-4">
-                                            <input type="text" id="registerUsername" class="form-controll" name='Username'/>
-                                            <label class="form-labell" for="registerUsername">Username</label>
+                                            <input type="text" id="registerUsername" class="form-controlls" name='Username'/>
+                                            <label class="form-labells" for="registerUsername">Username</label>
                                         </div>
 
 
                                         <div class="user-box mb-4">
-                                            <input type="text" id="registerEmail" class="form-controll" name='Email'/>
-                                            <label class="form-labell" for="registerEmail">Email</label>
+                                            <input type="text" id="registerEmail" class="form-controlls" name='Email'/>
+                                            <label class="form-labells" for="registerEmail">Email</label>
                                         </div>
 
 
                                         <div class="user-box mb-4">
-                                            <input type="password" id="registerPassword" class="form-controll" name='Password'/>
-                                            <label class="form-labell" for="registerPassword">Password</label>
+                                            <input type="password" id="registerPassword" class="form-controlls" name='Password'/>
+                                            <label class="form-labells" for="registerPassword">Password</label>
                                         </div>
 
 
                                         <div class="user-box mb-4">
-                                            <input type="password" id="registerRepeatPassword" class="form-controll" name='RepeatPassword'/>
-                                            <label class="form-labell" for="registerRepeatPassword">Repeat password</label>
+                                            <input type="password" id="registerRepeatPassword" class="form-controlls" name='RepeatPassword'/>
+                                            <label class="form-labells" for="registerRepeatPassword">Repeat password</label>
                                         </div>
-
-                                        
-
 
                                         <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
                                     </form>
