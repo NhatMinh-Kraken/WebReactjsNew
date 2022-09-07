@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Scrollbars } from 'react-custom-scrollbars';
+// import { Scrollbars } from 'react-custom-scrollbars';
 
 import './CustomScrollbars.scss';
 
@@ -83,25 +83,25 @@ class CustomScrollbars extends Component {
         );
     };
 
-    render() {
-        const { className, disableVerticalScroll, disableHorizontalScroll, children,...otherProps } = this.props;
-        return (
-            <Scrollbars
-                ref={this.ref}
-                autoHide={true}
-                autoHideTimeout={200}
-                hideTracksWhenNotNeeded={true}
-                className={className ? className + ' custom-scrollbar' : 'custom-scrollbar'}
-                {...otherProps}
-                renderTrackHorizontal={disableHorizontalScroll ? this.renderNone : this.renderTrackHorizontal}
-                renderTrackVertical={disableVerticalScroll ? this.renderNone : this.renderTrackVertical}
-                renderThumbHorizontal={disableHorizontalScroll ? this.renderNone : this.renderThumbHorizontal}
-                renderThumbVertical={disableVerticalScroll ? this.renderNone : this.renderThumbVertical}
-            >
-                {children}
-            </Scrollbars>
-        );
-    }
+    // render() {
+    //     // const { className, disableVerticalScroll, disableHorizontalScroll, children,...otherProps } = this.props;
+    //     // return (
+    //     //     <Scrollbars
+    //     //         ref={this.ref}
+    //     //         autoHide={true}
+    //     //         autoHideTimeout={200}
+    //     //         hideTracksWhenNotNeeded={true}
+    //     //         className={className ? className + ' custom-scrollbar' : 'custom-scrollbar'}
+    //     //         {...otherProps}
+    //     //         renderTrackHorizontal={disableHorizontalScroll ? this.renderNone : this.renderTrackHorizontal}
+    //     //         renderTrackVertical={disableVerticalScroll ? this.renderNone : this.renderTrackVertical}
+    //     //         renderThumbHorizontal={disableHorizontalScroll ? this.renderNone : this.renderThumbHorizontal}
+    //     //         renderThumbVertical={disableVerticalScroll ? this.renderNone : this.renderThumbVertical}
+    //     //     >
+    //     //         {children}
+    //     //     </Scrollbars>
+    //     // );
+    // }
 }
 
 export default CustomScrollbars;
