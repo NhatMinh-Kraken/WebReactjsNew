@@ -1,0 +1,87 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CRUD</title>
+
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <form action="/post-crud" method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Email</label>
+                        <input type="email" class="form-control"
+                            id="inputEmail4" name="Email" placeholder="Email">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Password</label>
+                        <input type="password" class="form-control"
+                            id="inputPassword4" name="Password"
+                            placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputFirstNamel4">First Name</label>
+                        <input type="text" class="form-control"
+                            id="inputFirstNamel4" name="FristName"
+                            placeholder="First Name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputLastNamel4">Last Name</label>
+                        <input type="text" class="form-control"
+                            id="inputLastNamel4" name="LastName"
+                            placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="inputAddress"
+                        name="Address"
+                        placeholder="1234 Main St">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputPhoneNumber">Phone Number</label>
+                        <input type="text" class="form-control"
+                            id="inputPhoneNumber" name="PhoneNumber"
+                            placeholder="+84...">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputRender">Sex</label>
+                        <select id="inputRender" class="form-control"
+                            name="Render">
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputRole">Role</label>
+                        <select id="inputRole" class="form-control"
+                            name="Role">
+                            <option value="1">Admin</option>
+                            <option value="2">Custom</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" name="Submit">Sign
+                    in</button>
+            </form>
+        </div>
+
+
+        <!-- jQuery library -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+        <!-- Popper JS -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

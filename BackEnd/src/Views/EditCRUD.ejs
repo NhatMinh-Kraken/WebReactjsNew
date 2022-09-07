@@ -1,0 +1,100 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edit</title>
+
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <form action="/Update-Crud" method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <input type="email" class="form-control"
+                            id="inputEmail4" name="id" hidden
+                            placeholder="Email" readonly value="<%=
+                            user.id %>">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="inputEmail4">Email</label>
+                        <input type="email" class="form-control"
+                            id="inputEmail4" name="Email"
+                            placeholder="Email" readonly value="<%=
+                            user.Email %>">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputFirstNamel4">First Name</label>
+                        <input type="text" class="form-control"
+                            id="inputFirstNamel4" name="FristName"
+                            placeholder="First Name" value="<%=
+                            user.FirstName %>">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputLastNamel4">Last Name</label>
+                        <input type="text" class="form-control"
+                            id="inputLastNamel4" name="LastName"
+                            placeholder="Last Name" value="<%=
+                            user.LastName %>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control"
+                        id="inputAddress"
+                        name="Address"
+                        placeholder="1234 Main St" value="<%=
+                        user.Address %>">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputPhoneNumber">Phone Number</label>
+                        <input type="text" class="form-control"
+                            id="inputPhoneNumber" name="PhoneNumber"
+                            placeholder="+84..." value="<%=
+                            user.PhoneUser %>">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputRender">Sex</label>
+                        <select id="inputRender" class="form-control"
+                            name="Render" readonly>
+                            <option value="<%= user.Gender %>"><%=
+                                    user.Gender === '1' ? "Male" :
+                                    "Female" %></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputRole">Role</label>
+                            <select id="inputRole" class="form-control"
+                                name="Role" readonly>
+                                <option value="<%= user.RoleId %>"><%=
+                                        user.RoleId === '1' ?
+                                        "Admin" : "Custom" %></option>
+                                </select>
+                            </div>
+                        </div>
+                        <button
+                            type="submit" class="btn
+                            btn-warning"
+                            name="SubmitEdit">Edit</buton>
+                    </form>
+                </div>
+
+
+                <!-- jQuery library -->
+                <script
+                    src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+                <!-- Popper JS -->
+                <script
+                    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+                <!-- Latest compiled JavaScript -->
+                <script
+                    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+            </body>
+        </html>
