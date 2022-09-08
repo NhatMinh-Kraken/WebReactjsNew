@@ -7,7 +7,7 @@ let handlelogin = async (req, res) => {
     if (!email || !password) {
         return res.status(500).json({
             errCode: 1,
-            message: 'Missing input parameter!'
+            message: 'Email hoặc mật khẩu không được trống !'
         })
     }
     //check email exist

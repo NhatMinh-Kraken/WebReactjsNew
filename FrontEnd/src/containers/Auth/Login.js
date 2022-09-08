@@ -8,6 +8,8 @@ import './Login.scss';
 import { FormattedMessage } from 'react-intl';
 
 import { HandleLoginApi } from '../../services/userService';
+import { userLoginSussess } from '../../store/actions';
+
 // import axios from 'axios';
 
 
@@ -26,7 +28,7 @@ class Login extends Component {
             email: '',
             password: '',
             isBool: false,
-            errMessage:'',
+            errMessage: '',
         }
     }
 
@@ -47,9 +49,23 @@ class Login extends Component {
             errMessage: '',
         })
         try {
-            await HandleLoginApi(this.state.email, this.state.password);
-        } catch (e) {
-            console.log(e)
+            let data = await HandleLoginApi(this.state.email, this.state.password);
+            if (data && data.errCode !== 0) {
+                this.setState({
+                    errMessage: data.message
+                })
+            }
+            if (data && data.errCode === 0) {
+                this.props.userLoginSussess(data.user)
+            }
+        } catch (error) {
+            if (error.response) {
+                if (error.response.data) {
+                    this.setState({
+                        errMessage: error.response.data.message
+                    })
+                }
+            }
         }
     }
 
@@ -81,27 +97,29 @@ class Login extends Component {
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
                                     {/* <form> */}
-                                    <div class="text-center mb-3">
-                                        <p>Sign in with:</p>
-                                        <button type="button" class="btn btn-link btn-floating mx-1 grey">
+                                    <div class="text-center mb-3 mt-3 mb-3">
+
+                                        <button type="button" class="btn btn-link btn-floating mx-1 ">
                                             <i class="fab fa-facebook-f"></i>
                                         </button>
 
-                                        <button type="button" class="btn btn-link btn-floating mx-1 grey">
+                                        <button type="button" class="btn btn-link btn-floating mx-1 ">
                                             <i class="fab fa-google"></i>
                                         </button>
 
-                                        <button type="button" class="btn btn-link btn-floating mx-1 grey">
+                                        <button type="button" class="btn btn-link btn-floating mx-1 ">
                                             <i class="fab fa-twitter"></i>
                                         </button>
 
-                                        <button type="button" class="btn btn-link btn-floating mx-1 grey">
+                                        <button type="button" class="btn btn-link btn-floating mx-1 ">
                                             <i class="fab fa-github"></i>
                                         </button>
                                     </div>
 
-                                    <p class="text-center">or:</p>
 
+                                    <div className='' style={{ color: 'red', marginBottom: '7px' }}>
+                                        {this.state.errMessage}
+                                    </div>
 
                                     <div class="user-box mb-4">
                                         <input type="text" id="loginName" class="form-controll" name='email' value={this.state.email} onChange={(event) => this.HandleOnChangeInputEmail(event)} required />
@@ -128,11 +146,9 @@ class Login extends Component {
                                         </div>
                                     </div>
 
-                                    <div className='col-12' style={{color: 'red'}}>
-                                        {this.state.errMessage}
+                                    <div className='col-12 d-flex justify-content-center'>
+                                        <button class="btn btn-danger btn-block mb-4 col-4 " onClick={() => { this.HandleLogin() }}>Sign in</button>
                                     </div>
-
-                                    <button class="btn btn-danger btn-block mb-4" onClick={() => { this.HandleLogin() }}>Sign in</button>
 
                                     <div class="text-center">
                                         <p>Not a member? <a href="#!">Register</a></p>
@@ -141,26 +157,25 @@ class Login extends Component {
                                 </div>
                                 <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
                                     <form>
-                                        <div class="text-center mb-3">
-                                            <p>Sign up with:</p>
-                                            <button type="button" class="btn btn-link btn-floating mx-1 grey">
+                                        <div class="text-center mb-3 mt-3 mb-3">
+
+                                            <button type="button" class="btn btn-link btn-floating mx-1 ">
                                                 <i class="fab fa-facebook-f"></i>
                                             </button>
 
-                                            <button type="button" class="btn btn-link btn-floating mx-1 grey">
+                                            <button type="button" class="btn btn-link btn-floating mx-1 ">
                                                 <i class="fab fa-google"></i>
                                             </button>
 
-                                            <button type="button" class="btn btn-link btn-floating mx-1 grey">
+                                            <button type="button" class="btn btn-link btn-floating mx-1 ">
                                                 <i class="fab fa-twitter"></i>
                                             </button>
 
-                                            <button type="button" class="btn btn-link btn-floating mx-1 grey">
+                                            <button type="button" class="btn btn-link btn-floating mx-1 ">
                                                 <i class="fab fa-github"></i>
                                             </button>
                                         </div>
 
-                                        <p class="text-center">or:</p>
 
 
                                         <div class="user-box mb-4">
@@ -191,8 +206,9 @@ class Login extends Component {
                                             <input type="password" id="registerRepeatPassword" class="form-controlls" name='RepeatPassword' />
                                             <label class="form-labells" for="registerRepeatPassword">Repeat password</label>
                                         </div>
-
-                                        <button class="btn btn-danger btn-block mb-3">Sign in</button>
+                                        <div className='col-12 d-flex justify-content-center'>
+                                            <button class="btn btn-danger btn-block mb-3 col-4">Sign in</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -214,8 +230,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+        userLoginSussess: (userInfo) => dispatch(actions.userLoginSussess(userInfo))
     };
 };
 
