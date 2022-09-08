@@ -26,6 +26,7 @@ class Login extends Component {
             email: '',
             password: '',
             isBool: false,
+            errMessage:'',
         }
     }
 
@@ -42,6 +43,9 @@ class Login extends Component {
     }
 
     HandleLogin = async () => {
+        this.setState({
+            errMessage: '',
+        })
         try {
             await HandleLoginApi(this.state.email, this.state.password);
         } catch (e) {
@@ -79,19 +83,19 @@ class Login extends Component {
                                     {/* <form> */}
                                     <div class="text-center mb-3">
                                         <p>Sign in with:</p>
-                                        <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <button type="button" class="btn btn-link btn-floating mx-1 grey">
                                             <i class="fab fa-facebook-f"></i>
                                         </button>
 
-                                        <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <button type="button" class="btn btn-link btn-floating mx-1 grey">
                                             <i class="fab fa-google"></i>
                                         </button>
 
-                                        <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <button type="button" class="btn btn-link btn-floating mx-1 grey">
                                             <i class="fab fa-twitter"></i>
                                         </button>
 
-                                        <button type="button" class="btn btn-link btn-floating mx-1">
+                                        <button type="button" class="btn btn-link btn-floating mx-1 grey">
                                             <i class="fab fa-github"></i>
                                         </button>
                                     </div>
@@ -113,20 +117,20 @@ class Login extends Component {
 
 
                                     <div class="row mb-4">
-                                        <div class="col-md-6 d-flex justify-content-center">
-
+                                        <div class="col-6 justify-content-center d-flex">
                                             <div class="form-check mb-3 mb-md-0">
                                                 <input class="form-check-input" type="checkbox" value="" id="loginCheck" />
                                                 <label class="form-check-label" for="loginCheck"> Remember me </label>
                                             </div>
                                         </div>
-
-                                        <div class="col-md-6 d-flex justify-content-center">
-
+                                        <div class="col-6 justify-content-center d-flex">
                                             <a href="#!">Forgot password?</a>
                                         </div>
                                     </div>
 
+                                    <div className='col-12' style={{color: 'red'}}>
+                                        {this.state.errMessage}
+                                    </div>
 
                                     <button class="btn btn-danger btn-block mb-4" onClick={() => { this.HandleLogin() }}>Sign in</button>
 
@@ -139,19 +143,19 @@ class Login extends Component {
                                     <form>
                                         <div class="text-center mb-3">
                                             <p>Sign up with:</p>
-                                            <button type="button" class="btn btn-link btn-floating mx-1">
+                                            <button type="button" class="btn btn-link btn-floating mx-1 grey">
                                                 <i class="fab fa-facebook-f"></i>
                                             </button>
 
-                                            <button type="button" class="btn btn-link btn-floating mx-1">
+                                            <button type="button" class="btn btn-link btn-floating mx-1 grey">
                                                 <i class="fab fa-google"></i>
                                             </button>
 
-                                            <button type="button" class="btn btn-link btn-floating mx-1">
+                                            <button type="button" class="btn btn-link btn-floating mx-1 grey">
                                                 <i class="fab fa-twitter"></i>
                                             </button>
 
-                                            <button type="button" class="btn btn-link btn-floating mx-1">
+                                            <button type="button" class="btn btn-link btn-floating mx-1 grey">
                                                 <i class="fab fa-github"></i>
                                             </button>
                                         </div>

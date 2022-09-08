@@ -1,3 +1,16 @@
+.black{
+    color: black;
+}
+
+.grey{
+    color: rgb(184, 180, 180);
+}
+
+.blue{
+    color: rgb(9, 171, 224) ;
+}
+
+
 .login-background {
     background-color: rgba(206, 241, 245, 0.842);
     border: 0.5px solid rgb(247, 246, 246);
@@ -58,7 +71,7 @@
     left: 0;
     padding: 10px 0;
     font-size: 16px;
-    color: rgb(9, 171, 224);
+    color:  rgb(184, 180, 180);
     pointer-events: none;
     transition: .5s;
 }
@@ -106,7 +119,7 @@
     left: 0;
     padding: 10px 0;
     font-size: 16px;
-    color: rgb(9, 171, 224);
+    color: rgb(184, 180, 180);
     pointer-events: none;
     transition: .5s;
 }
@@ -115,7 +128,7 @@
 .tab-pane .user-box .form-controlls:valid~.form-labells {
     top: -20px;
     left: 0;
-    color: rgb(9, 171, 224);
+    color: rgb(184, 180, 180);
     font-size: 14px;
 }
 
@@ -125,5 +138,5 @@
 
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
-    background-color: rgb(243, 81, 40);
+    background-color: rgb(4, 4, 4);
 }
