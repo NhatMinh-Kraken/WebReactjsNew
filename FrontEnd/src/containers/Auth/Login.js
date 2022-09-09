@@ -56,7 +56,7 @@ class Login extends Component {
                 })
             }
             if (data && data.errCode === 0) {
-                this.props.userLoginSussess(data.user)
+                { this.props.userLoginSussess(data.user) }
             }
         } catch (error) {
             if (error.response) {
