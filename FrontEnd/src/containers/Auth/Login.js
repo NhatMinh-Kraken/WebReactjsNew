@@ -176,31 +176,25 @@ class Login extends Component {
                                             </button>
                                         </div>
 
-
-
                                         <div class="user-box mb-4">
                                             <input type="text" id="registerName" class="form-controlls" name='Name' />
                                             <label class="form-labells" for="registerName">Name</label>
                                         </div>
-
 
                                         <div class="user-box mb-4">
                                             <input type="text" id="registerUsername" class="form-controlls" name='Username' />
                                             <label class="form-labells" for="registerUsername">Username</label>
                                         </div>
 
-
                                         <div class="user-box mb-4">
                                             <input type="text" id="registerEmail" class="form-controlls" name='Email' />
                                             <label class="form-labells" for="registerEmail">Email</label>
                                         </div>
 
-
                                         <div class="user-box mb-4">
                                             <input type="password" id="registerPassword" class="form-controlls" name='Password' />
                                             <label class="form-labells" for="registerPassword">Password</label>
                                         </div>
-
 
                                         <div class="user-box mb-4">
                                             <input type="password" id="registerRepeatPassword" class="form-controlls" name='RepeatPassword' />

@@ -15,20 +15,34 @@ let HandleUserLogin = (email, password) => {
                     },
                     raw: true
                 });
+
                 if (user) {
                     //compare password
                     let checkHashPassword = await bcrypt.compareSync(password, user.Password);
+
+
                     if (checkHashPassword) {
                         UserData.errCode = 0;
                         UserData.errMessage = 'ok';
-
                         delete user.Password;
-                        UserData.user = user;
+
+                        if (user.RoleId == 1) {
+                            UserData.errCode = 0;
+                            UserData.errMessage = 'ok';
+                            UserData.user = user;
+                        }
+                        else {
+                            UserData.errCode = 5;
+                            UserData.errMessage = 'Bạn không có quyền truy cập';
+                        }
                     }
+
                     else {
                         UserData.errCode = 3;
                         UserData.errMessage = 'Mật khẩu không hợp lệ';
                     }
+
+
                 }
                 else {
                     UserData.errCode = 2;
@@ -40,7 +54,9 @@ let HandleUserLogin = (email, password) => {
                 UserData.errCode = 1;
                 UserData.errMessage = 'Email không đúng';
             }
+
             resolve(UserData);
+
         } catch (e) {
             reject(e);
         }
@@ -51,7 +67,9 @@ let checkUserEmail = (Useremail) => {
     return new Promise(async (resolve, reject) => {
         try {
             let user = await db.User.findOne({
-                where: { email: Useremail }
+                where: {
+                    email: Useremail
+                }
             })
             if (user) {
                 resolve(true);
@@ -64,6 +82,37 @@ let checkUserEmail = (Useremail) => {
         }
     })
 }
+
+
+let getAllUser = (userId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let users = '';
+            if (userId === 'ALL') {
+                users = await db.User.findAll({
+                    attributes: {
+                        exclude: ['Password']
+                    },
+                    raw: true
+                })
+            }
+            if (userId && userId !== 'ALL') {
+                users = await db.User.findOne({
+                    where: { id: userId },
+                    attributes: {
+                        exclude: ['Password']
+                    },
+                    raw: true
+                })
+            }
+            resolve(users)
+
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
 module.exports = {
     HandleUserLogin: HandleUserLogin,
+    getAllUser: getAllUser,
 }
