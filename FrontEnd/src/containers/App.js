@@ -42,7 +42,6 @@ class App extends Component {
                     <div className="main-container">
                         <ConfirmModal />
                         {this.props.isLoggedIn && <Header />}
-
                         <span className="content-container">
                             <Switch>
                                 <Route path={path.HOME} exact component={(Home)} />

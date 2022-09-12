@@ -1,6 +1,8 @@
 import bcrypt from 'bcryptjs';
 import db from "../models/index";
 
+const salt = bcrypt.genSaltSync(10);
+
 let HandleUserLogin = (email, password) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -83,7 +85,6 @@ let checkUserEmail = (Useremail) => {
     })
 }
 
-
 let getAllUser = (userId) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -112,7 +113,123 @@ let getAllUser = (userId) => {
         }
     })
 }
+
+let HashUserPassword = (Password) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let hashPassword = await bcrypt.hashSync(Password, salt);
+            resolve(hashPassword);
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let createNewUser = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            // check email is exist ????
+            let checkEmail = await checkUserEmail(data.Email);
+            if (checkEmail === true) {
+                resolve({
+                    errCode: 1,
+                    errMessage: 'Email đã được sử dụng'
+                })
+            }
+
+            let hashPasswordFromBcrypt = await HashUserPassword(data.Password);
+            await db.User.create({
+                Email: data.Email,
+                Password: hashPasswordFromBcrypt,
+                FirstName: data.FristName,
+                LastName: data.LastName,
+                PhoneUser: data.PhoneNumber,
+                Address: data.Address,
+                Gender: data.Render === '1' ? true : false,
+                RoleId: data.Role
+            })
+            resolve({
+                errCode: 0,
+                errMessage: 'Oke 0'
+            })
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let deleteNewUser = (UserId) => {
+    return new Promise(async (resolve, reject) => {
+        let founduser = await db.User.findOne({
+            where: { id: UserId }
+        })
+        if (!founduser) {
+            resolve({
+                errCode: 2,
+                errMessage: "Người dùng không tồn tại"
+            })
+        }
+        // if (founduser) {
+        //     await founduser.destroy();
+        // }
+        await db.User.destroy({
+            where: { id: UserId }
+        })
+        resolve({
+            errCode: 0,
+            errMessage: "Người dùng đã bị xóa"
+        })
+    })
+}
+
+let updateNewUser = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            if (!data.id) {
+                resolve({
+                    errCode: 2,
+                    errMessage: 'Chưa truyền id'
+                })
+            }
+
+            let user = await db.User.findOne({
+                where: {
+                    id: data.id
+                },
+                raw: false
+            })
+
+            if (user) {
+                user.FirstName = data.FristName;
+                user.LastName = data.LastName;
+                user.PhoneUser = data.PhoneNumber;
+                user.Address = data.Address;
+
+                await user.save();
+
+                resolve({
+                    errCode: 0,
+                    errMessage: 'Sửa thành công'
+                });
+            }
+            else {
+                resolve({
+                    errCode: 1,
+                    errMessage: 'Không có người dùng'
+                });
+            }
+
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
 module.exports = {
     HandleUserLogin: HandleUserLogin,
     getAllUser: getAllUser,
+    createNewUser: createNewUser,
+    deleteNewUser: deleteNewUser,
+    updateNewUser: updateNewUser
 }

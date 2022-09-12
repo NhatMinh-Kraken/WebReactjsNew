@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import '../System/UserManage.scss'
 import { GetAllUsers } from '../../services/userService'
 
+
 class UserManage extends Component {
 
     constructor(props) {
@@ -19,9 +20,9 @@ class UserManage extends Component {
             this.setState({
                 arrUser: response.users
             })
-            console.log('check state user 1', this.state.arrUser);
+            // console.log('check state user 1', this.state.arrUser);
         }
-        console.log('get user from node.js: ', response);
+        //console.log('get user from node.js: ', response);
     }
 
 
@@ -29,7 +30,8 @@ class UserManage extends Component {
         console.log('check state user 3', this.state)
         let arrUser = this.state.arrUser;
         return (
-            <div className=''>
+            <div className='scrollbar'>
+
                 <div className="container mt-5">
                     <span className='Manager-title'>Manager User</span>
                     {
@@ -98,8 +100,8 @@ class UserManage extends Component {
                     }
 
                 </div>
-            </div>
 
+            </div>
         );
     }
 
