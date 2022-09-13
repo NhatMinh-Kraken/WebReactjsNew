@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import '../System/UserManage.scss'
-import { GetAllUsers } from '../../services/userService'
+import { GetAllUsers, createNewUserService } from '../../services/userService'
+import ModalUser from '../System/ModalUser';
 
 
 class UserManage extends Component {
@@ -10,88 +11,128 @@ class UserManage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            arrUser: []
+            arrUser: [],
+            isOpenModalUser: false,
+
         }
     }
 
     async componentDidMount() {
+        await this.getAllUserFromReact();
+        //console.log('get user from node.js: ', response);
+    }
+
+    getAllUserFromReact = async () => {
         let response = await GetAllUsers('ALL');
         if (response && response.errCode === 0) {
             this.setState({
                 arrUser: response.users
             })
-            // console.log('check state user 1', this.state.arrUser);
         }
-        //console.log('get user from node.js: ', response);
     }
 
+    handleAddNewUser = () => {
+        this.setState({
+            isOpenModalUser: true,
+        })
+    }
+
+    toggleModalUser = () => {
+        this.setState({
+            isOpenModalUser: !this.state.isOpenModalUser,
+        })
+    }
+
+    createNewUser = async (data) => {
+        try {
+            let response = await createNewUserService(data);
+            if (response && response.errCode == 0) {
+                await this.getAllUserFromReact();
+                this.setState({
+                    isOpenModalUser: false
+                })
+            }
+            else {    
+                alert(response.errMessage)
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     render() {
-        console.log('check state user 3', this.state)
         let arrUser = this.state.arrUser;
         return (
             <div className='scrollbar'>
+                <ModalUser
+                    isOpen={this.state.isOpenModalUser}
+                    toggleFromParent={this.toggleModalUser}
+                    createNewUser={this.createNewUser}
 
+                />
                 <div className="container mt-5">
                     <span className='Manager-title'>Manager User</span>
+                    <div className='mx-1 '>
+                        <button className='btn btn-primary px-3 border border-warning' onClick={() => this.handleAddNewUser()}><i className='fas fa-plus mr-2'></i>Add New User</button>
+                    </div>
                     {
                         arrUser && arrUser.map((item, index) => {
                             return (
                                 <div className='container mt-2 mb-5'>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-12">
-                                            <label for="inputEmail4">Email</label>
-                                            <input type="email" class="form-control" id="inputEmail4" name="Email" placeholder="Email" value={item.Email} readOnly />
+                                    <div className="form-row">
+                                        <div className="form-group col-md-12">
+                                            <label htmlFor="inputEmail4">Email</label>
+                                            <input type="email" className="form-control" id="inputEmail4" name="Email" placeholder="Email" defaultValue={item.Email} readonly />
                                         </div>
                                     </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputFirstNamel4">First Name</label>
-                                            <input type="text" class="form-control"
+                                    <div className="form-row">
+                                        <div className="form-group col-md-6">
+                                            <label htmlFor="inputFirstNamel4">First Name</label>
+                                            <input type="text" className="form-control"
                                                 id="inputFirstNamel4" name="FristName"
-                                                placeholder="First Name" value={item.FirstName} />
+                                                placeholder="First Name" defaultValue={item.FirstName} />
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputLastNamel4">Last Name</label>
-                                            <input type="text" class="form-control"
+                                        <div className="form-group col-md-6">
+                                            <label htmlFor="inputLastNamel4">Last Name</label>
+                                            <input type="text" className="form-control"
                                                 id="inputLastNamel4" name="LastName"
-                                                placeholder="Last Name" value={item.LastName} />
+                                                placeholder="Last Name" defaultValue={item.LastName} />
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputAddress">Address</label>
-                                        <input type="text" class="form-control" id="inputAddress"
+                                    <div className="form-group">
+                                        <label htmlFor="inputAddress">Address</label>
+                                        <input type="text" className="form-control" id="inputAddress"
                                             name="Address"
-                                            placeholder="1234 Main St" value={item.Address} />
+                                            placeholder="1234 Main St" defaultValue={item.Address} />
                                     </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputPhoneNumber">Phone Number</label>
-                                            <input type="text" class="form-control"
+                                    <div className="form-row">
+                                        <div className="form-group col-md-6">
+                                            <label htmlFor="inputPhoneNumber">Phone Number</label>
+                                            <input type="text" className="form-control"
                                                 id="inputPhoneNumber" name="PhoneNumber"
-                                                placeholder="+84..." value={item.PhoneUser} />
+                                                placeholder="+84..." defaultValue={item.PhoneUser} />
                                         </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="inputRender">Sex</label>
-                                            <input type="text" class="form-control"
+                                        <div className="form-group col-md-4">
+                                            <label htmlFor="inputRender">Sex</label>
+                                            <input type="text" className="form-control"
                                                 id="inputRender" name="Sex"
-                                                value={item.Gender === 1 ? "Male" :
+                                                defaultValue={item.Gender === 1 ? "Male" :
                                                     "Female"} />
                                         </div>
-                                        <div class="form-group col-md-2">
-                                            <label for="inputRole">Role</label>
-                                            <input type="text" class="form-control"
+                                        <div className="form-group col-md-2">
+                                            <label htmlFor="inputRole">Role</label>
+                                            <input type="text" className="form-control"
                                                 id="inputRole" name="Role"
-                                                value={item.RoleId === '1' ?
+                                                defaultValue={item.RoleId === '1' ?
                                                     "Admin" : "Custom"} />
                                         </div>
                                     </div>
 
                                     <button
-                                        type="submit" class="btn btn-warning edit"
+                                        type="submit" className="btn btn-warning edit"
                                         name="SubmitEdit">Edit</button>
                                     <button
-                                        type="submit" class="btn btn-danger deleted"
+                                        type="submit" className="btn btn-danger deleted"
                                         name="SubmitDelete">Delete</button>
 
                                 </div>
@@ -101,7 +142,7 @@ class UserManage extends Component {
 
                 </div>
 
-            </div>
+            </div >
         );
     }
 

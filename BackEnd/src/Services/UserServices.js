@@ -22,7 +22,6 @@ let HandleUserLogin = (email, password) => {
                     //compare password
                     let checkHashPassword = await bcrypt.compareSync(password, user.Password);
 
-
                     if (checkHashPassword) {
                         UserData.errCode = 0;
                         UserData.errMessage = 'ok';
@@ -136,22 +135,25 @@ let createNewUser = (data) => {
                     errMessage: 'Email đã được sử dụng'
                 })
             }
+            else {
+                let hashPasswordFromBcrypt = await HashUserPassword(data.Password);
+                await db.User.create({
+                    Email: data.Email,
+                    Password: hashPasswordFromBcrypt,
+                    FirstName: data.FirstName,
+                    LastName: data.LastName,
+                    PhoneUser: data.PhoneUser,
+                    Address: data.Address,
+                    Gender: data.Render === '1' ? true : false,
+                    RoleId: data.Role
+                })
+                resolve({
+                    errCode: 0,
+                    errMessage: 'Oke 0'
+                })
+            }
 
-            let hashPasswordFromBcrypt = await HashUserPassword(data.Password);
-            await db.User.create({
-                Email: data.Email,
-                Password: hashPasswordFromBcrypt,
-                FirstName: data.FristName,
-                LastName: data.LastName,
-                PhoneUser: data.PhoneNumber,
-                Address: data.Address,
-                Gender: data.Render === '1' ? true : false,
-                RoleId: data.Role
-            })
-            resolve({
-                errCode: 0,
-                errMessage: 'Oke 0'
-            })
+
         } catch (e) {
             reject(e);
         }

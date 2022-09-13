@@ -83,36 +83,36 @@ class Login extends Component {
                     <div className='login-content'>
                         <div className='login-background-1'>
                             <div className='login-background-header'>
-                                <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-                                    <li class="nav-item mr-2" role="presentation">
-                                        <a class="nav-link active" id="tab-login" data-toggle="pill" href="#pills-login" role="tab"
+                                <ul className="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                                    <li className="nav-item mr-2" role="presentation">
+                                        <a className="nav-link active" id="tab-login" data-toggle="pill" href="#pills-login" role="tab"
                                             aria-controls="pills-login" aria-selected="true">Login</a>
                                     </li>
-                                    <li class="nav-item ml-2" role="presentation">
-                                        <a class="nav-link" id="tab-register" data-toggle="pill" href="#pills-register" role="tab"
+                                    <li className="nav-item ml-2" role="presentation">
+                                        <a className="nav-link" id="tab-register" data-toggle="pill" href="#pills-register" role="tab"
                                             aria-controls="pills-register" aria-selected="false">Register</a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="tab-content">
-                                <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                            <div className="tab-content">
+                                <div className="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
                                     {/* <form> */}
-                                    <div class="text-center mb-3 mt-3 mb-3">
+                                    <div className="text-center mb-3 mt-3 mb-3">
 
-                                        <button type="button" class="btn btn-link btn-floating mx-1 ">
-                                            <i class="fab fa-facebook-f"></i>
+                                        <button type="button" className="btn btn-link btn-floating mx-1 ">
+                                            <i className="fab fa-facebook-f"></i>
                                         </button>
 
-                                        <button type="button" class="btn btn-link btn-floating mx-1 ">
-                                            <i class="fab fa-google"></i>
+                                        <button type="button" className="btn btn-link btn-floating mx-1 ">
+                                            <i className="fab fa-google"></i>
                                         </button>
 
-                                        <button type="button" class="btn btn-link btn-floating mx-1 ">
-                                            <i class="fab fa-twitter"></i>
+                                        <button type="button" className="btn btn-link btn-floating mx-1 ">
+                                            <i className="fab fa-twitter"></i>
                                         </button>
 
-                                        <button type="button" class="btn btn-link btn-floating mx-1 ">
-                                            <i class="fab fa-github"></i>
+                                        <button type="button" className="btn btn-link btn-floating mx-1 ">
+                                            <i className="fab fa-github"></i>
                                         </button>
                                     </div>
 
@@ -121,87 +121,87 @@ class Login extends Component {
                                         {this.state.errMessage}
                                     </div>
 
-                                    <div class="user-box mb-4">
-                                        <input type="text" id="loginName" class="form-controll" name='email' value={this.state.email} onChange={(event) => this.HandleOnChangeInputEmail(event)} required />
-                                        <label class="form-labell" for="loginName">Email or username</label>
+                                    <div className="user-box mb-4">
+                                        <input type="text" id="loginName" className="form-controll" name='email' defaultValue={this.state.email} onChange={(event) => this.HandleOnChangeInputEmail(event)} required />
+                                        <label className="form-labell" htmlFor="loginName">Email or username</label>
                                     </div>
 
 
-                                    <div class="user-box mb-4">
-                                        <input type={this.state.isBool ? 'text' : 'password'} id="loginPassword" class="form-controll" name='password' value={this.state.password} onChange={(event) => this.HandleOnChangeInputPass(event)} required />
-                                        <span className='show-btn' onClick={() => { this.HandleShowEyePassword() }}><i class={this.state.isBool ? 'fa fa-eye' : 'fa fa-eye-slash'}></i></span>
-                                        <label class="form-labell" for="loginPassword">Password</label>
+                                    <div className="user-box mb-4">
+                                        <input type={this.state.isBool ? 'text' : 'password'} id="loginPassword" className="form-controll" name='password' defaultValue={this.state.password} onChange={(event) => this.HandleOnChangeInputPass(event)} required />
+                                        <span className='show-btn' onClick={() => { this.HandleShowEyePassword() }}><i className={this.state.isBool ? 'fa fa-eye' : 'fa fa-eye-slash'}></i></span>
+                                        <label className="form-labell" htmlFor="loginPassword">Password</label>
                                     </div>
 
 
-                                    <div class="row mb-4">
-                                        <div class="col-6 justify-content-center d-flex">
-                                            <div class="form-check mb-3 mb-md-0">
-                                                <input class="form-check-input" type="checkbox" value="" id="loginCheck" />
-                                                <label class="form-check-label" for="loginCheck"> Remember me </label>
+                                    <div className="row mb-4">
+                                        <div className="col-6 justify-content-center d-flex">
+                                            <div className="form-check mb-3 mb-md-0">
+                                                <input className="form-check-input" type="checkbox" defaultValue="" id="loginCheck" />
+                                                <label className="form-check-label" htmlFor="loginCheck"> Remember me </label>
                                             </div>
                                         </div>
-                                        <div class="col-6 justify-content-center d-flex">
+                                        <div className="col-6 justify-content-center d-flex">
                                             <a href="#!">Forgot password?</a>
                                         </div>
                                     </div>
 
                                     <div className='col-12 d-flex justify-content-center'>
-                                        <button class="btn btn-danger btn-block mb-4 col-4 " onClick={() => { this.HandleLogin() }}>Sign in</button>
+                                        <button className="btn btn-danger btn-block mb-4 col-4 " onClick={() => { this.HandleLogin() }}>Sign in</button>
                                     </div>
 
-                                    <div class="text-center">
+                                    <div className="text-center">
                                         <p>Not a member? <a href="#!">Register</a></p>
                                     </div>
                                     {/* </form> */}
                                 </div>
-                                <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+                                <div className="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
                                     <form>
-                                        <div class="text-center mb-3 mt-3 mb-3">
+                                        <div className="text-center mb-3 mt-3 mb-3">
 
-                                            <button type="button" class="btn btn-link btn-floating mx-1 ">
-                                                <i class="fab fa-facebook-f"></i>
+                                            <button type="button" className="btn btn-link btn-floating mx-1 ">
+                                                <i className="fab fa-facebook-f"></i>
                                             </button>
 
-                                            <button type="button" class="btn btn-link btn-floating mx-1 ">
-                                                <i class="fab fa-google"></i>
+                                            <button type="button" className="btn btn-link btn-floating mx-1 ">
+                                                <i className="fab fa-google"></i>
                                             </button>
 
-                                            <button type="button" class="btn btn-link btn-floating mx-1 ">
-                                                <i class="fab fa-twitter"></i>
+                                            <button type="button" className="btn btn-link btn-floating mx-1 ">
+                                                <i className="fab fa-twitter"></i>
                                             </button>
 
-                                            <button type="button" class="btn btn-link btn-floating mx-1 ">
-                                                <i class="fab fa-github"></i>
+                                            <button type="button" className="btn btn-link btn-floating mx-1 ">
+                                                <i className="fab fa-github"></i>
                                             </button>
                                         </div>
 
-                                        <div class="user-box mb-4">
-                                            <input type="text" id="registerName" class="form-controlls" name='Name' />
-                                            <label class="form-labells" for="registerName">Name</label>
+                                        <div className="user-box mb-4">
+                                            <input type="text" id="registerName" className="form-controlls" name='Name' />
+                                            <label className="form-labells" htmlFor="registerName">Name</label>
                                         </div>
 
-                                        <div class="user-box mb-4">
-                                            <input type="text" id="registerUsername" class="form-controlls" name='Username' />
-                                            <label class="form-labells" for="registerUsername">Username</label>
+                                        <div className="user-box mb-4">
+                                            <input type="text" id="registerUsername" className="form-controlls" name='Username' />
+                                            <label className="form-labells" htmlFor="registerUsername">Username</label>
                                         </div>
 
-                                        <div class="user-box mb-4">
-                                            <input type="text" id="registerEmail" class="form-controlls" name='Email' />
-                                            <label class="form-labells" for="registerEmail">Email</label>
+                                        <div className="user-box mb-4">
+                                            <input type="text" id="registerEmail" className="form-controlls" name='Email' />
+                                            <label className="form-labells" htmlFor="registerEmail">Email</label>
                                         </div>
 
-                                        <div class="user-box mb-4">
-                                            <input type="password" id="registerPassword" class="form-controlls" name='Password' />
-                                            <label class="form-labells" for="registerPassword">Password</label>
+                                        <div className="user-box mb-4">
+                                            <input type="password" id="registerPassword" className="form-controlls" name='Password' />
+                                            <label className="form-labells" htmlFor="registerPassword">Password</label>
                                         </div>
 
-                                        <div class="user-box mb-4">
-                                            <input type="password" id="registerRepeatPassword" class="form-controlls" name='RepeatPassword' />
-                                            <label class="form-labells" for="registerRepeatPassword">Repeat password</label>
+                                        <div className="user-box mb-4">
+                                            <input type="password" id="registerRepeatPassword" className="form-controlls" name='RepeatPassword' />
+                                            <label className="form-labells" htmlFor="registerRepeatPassword">Repeat password</label>
                                         </div>
                                         <div className='col-12 d-flex justify-content-center'>
-                                            <button class="btn btn-danger btn-block mb-3 col-4">Sign in</button>
+                                            <button className="btn btn-danger btn-block mb-3 col-4">Sign in</button>
                                         </div>
                                     </form>
                                 </div>

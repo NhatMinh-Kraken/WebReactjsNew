@@ -15,7 +15,7 @@ class CustomToast extends Component {
                     <div className="toast-title">
                         {time && (
                             <span className="date">
-                                <FormattedTime hour='numeric' minute='numeric' second='numeric' hour12={true} value={time} />
+                                <FormattedTime hour='numeric' minute='numeric' second='numeric' hour12={true} defaultValue={time} />
                             </span>
                         )}
                         <i className="fa fa-fw fa-exclamation-triangle" />
@@ -27,7 +27,7 @@ class CustomToast extends Component {
                                 {
                                     message.map((msg, index) => {
                                         return (
-                                            <Fragment key={index}>
+                                            <Fragment key="{index}">
                                                 <div className="toast-content">{msg}</div>
                                             </Fragment>
                                         )

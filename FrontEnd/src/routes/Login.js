@@ -115,7 +115,7 @@ class Login extends Component {
                                 name="username"
                                 type="text"
                                 className="form-control"
-                                value={username}
+                                defaultValue={username}
                                 onChange={this.onUsernameChange}
                             />
                         </div>
@@ -128,7 +128,7 @@ class Login extends Component {
                                 name="password"
                                 type="password"
                                 className="form-control"
-                                value={password}
+                                defaultValue={password}
                                 onChange={this.onPasswordChange}
                             />
                         </div>
@@ -145,7 +145,7 @@ class Login extends Component {
                                 id="btnLogin"
                                 type="submit"
                                 className="btn"
-                                value={LanguageUtils.getMessageByKey("login.login", lang)}
+                                defaultValue={LanguageUtils.getMessageByKey("login.login", lang)}
                                 onClick={this.processLogin}
                             />
                         </div>
