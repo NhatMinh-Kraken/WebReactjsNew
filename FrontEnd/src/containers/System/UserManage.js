@@ -137,11 +137,11 @@ class UserManage extends Component {
                     {
                         arrUser && arrUser.map((item, index) => {
                             return (
-                                <div className='container mt-2 mb-5'>
+                                <div className='container mt-5 pb-5 Manager-border'>
                                     <div className="form-row">
                                         <div className="form-group col-md-12">
                                             <label >Email</label>
-                                            <input type="email" className="form-control" name="Email" placeholder="Email" defaultValue={item.Email} />
+                                            <input type="email" className="form-control" name="Email" placeholder="Email" value={item.Email} />
                                         </div>
                                     </div>
                                     <div className="form-row">
@@ -149,50 +149,48 @@ class UserManage extends Component {
                                             <label >First Name</label>
                                             <input type="text" className="form-control"
                                                 name="FristName"
-                                                placeholder="First Name" defaultValue={item.FirstName} />
+                                                placeholder="First Name" value={item.FirstName} />
                                         </div>
                                         <div className="form-group col-md-6">
                                             <label >Last Name</label>
                                             <input type="text" className="form-control"
                                                 name="LastName"
-                                                placeholder="Last Name" defaultValue={item.LastName} />
+                                                placeholder="Last Name" value={item.LastName} />
                                         </div>
                                     </div>
                                     <div className="form-group">
                                         <label >Address</label>
                                         <input type="text" className="form-control"
                                             name="Address"
-                                            placeholder="1234 Main St" defaultValue={item.Address} />
+                                            placeholder="1234 Main St" value={item.Address} />
                                     </div>
                                     <div className="form-row">
                                         <div className="form-group col-md-6">
                                             <label >Phone Number</label>
                                             <input type="text" className="form-control"
                                                 name="PhoneNumber"
-                                                placeholder="+84..." defaultValue={item.PhoneUser} />
+                                                placeholder="+84..." value={item.PhoneUser} />
                                         </div>
                                         <div className="form-group col-md-4">
                                             <label >Sex</label>
                                             <input type="text" className="form-control"
                                                 name="Sex"
-                                                defaultValue={item.Gender === '0' ? "Male" :
-                                                    "Female"} />
+                                                value={item.Gender === '0' ? "Male" : "Female"} />
                                         </div>
                                         <div className="form-group col-md-2">
                                             <label >Role</label>
                                             <input type="text" className="form-control"
                                                 name="Role"
-                                                defaultValue={item.RoleId === '0' ?
-                                                    "Admin" : "Custom"} />
+                                                value={item.RoleId === '0' ? "Admin" : "Custom"} />
                                         </div>
                                     </div>
 
                                     <button
                                         type="submit" className="btn btn-warning edit"
-                                        name="SubmitEdit" onClick={() => this.handleEditUser(item)}>Edit</button>
+                                        name="SubmitEdit" onClick={() => this.handleEditUser(item)}><span><i className="far fa-edit mr-2"></i></span>Edit</button>
                                     <button
                                         type="submit" className="btn btn-danger deleted"
-                                        name="SubmitDelete" onClick={() => this.handleDeleteUser(item)}>Delete</button>
+                                        name="SubmitDelete" onClick={() => this.handleDeleteUser(item)}><span><i className="far fa-trash-alt mr-2"></i></span>Delete</button>
 
                                 </div>
                             )

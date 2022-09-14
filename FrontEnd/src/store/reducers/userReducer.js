@@ -2,7 +2,9 @@ import actionTypes from '../actions/actionTypes';
 
 const initialState = {
     isLoggedIn: false,
-    userInfo: null
+    userInfo: null,
+    customerUser: null
+
 }
 
 const appReducer = (state = initialState, action) => {
@@ -12,6 +14,12 @@ const appReducer = (state = initialState, action) => {
                 ...state,
                 isLoggedIn: true,
                 userInfo: action.userInfo
+            }
+        case actionTypes.USERCUSTOMER_LOGIN_SUCCESS:
+            return{
+                ...state,
+                isLoggedIn:true,
+                customerUser: action.customerUser
             }
         case actionTypes.USER_LOGIN_FAIL:
             return {

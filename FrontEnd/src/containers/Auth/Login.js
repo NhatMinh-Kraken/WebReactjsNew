@@ -8,7 +8,7 @@ import './Login.scss';
 import { FormattedMessage } from 'react-intl';
 
 import { HandleLoginApi } from '../../services/userService';
-import { userLoginSussess } from '../../store/actions';
+import { userLoginSussess, userCustomerLoginSussess } from '../../store/actions';
 
 // import axios from 'axios';
 
@@ -16,11 +16,9 @@ import { userLoginSussess } from '../../store/actions';
 class Login extends Component {
 
 
-    // componentDidMount() {
-    //     axios.post('http://localhost:8080').then(res => {
-    //         console.log('Kết nối thành công 8080');
-    //     })
-    // }
+    componentDidMount() {
+
+    }
 
     constructor(props) {
         super(props);
@@ -57,6 +55,10 @@ class Login extends Component {
             }
             if (data && data.errCode === 0) {
                 { this.props.userLoginSussess(data.user) }
+            }
+            if(data && data.errCode === 6)
+            {
+                { this.props.userCustomerLoginSussess(data.user) }
             }
         } catch (error) {
             if (error.response) {
@@ -224,7 +226,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        userLoginSussess: (userInfo) => dispatch(actions.userLoginSussess(userInfo))
+        userLoginSussess: (userInfo) => dispatch(actions.userLoginSussess(userInfo)),
+        userCustomerLoginSussess: (customerUser) => dispatch(actions.userCustomerLoginSussess(customerUser))
     };
 };
 

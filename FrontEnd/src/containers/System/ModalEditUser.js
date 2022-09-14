@@ -123,16 +123,16 @@ class ModalEditUser extends Component {
                                             <label htmlFor="inputGender" className="form-labels">Sex</label>
                                             <select id="inputGender" className="form-control"
                                                 name="Gender" onChange={(event) => { this.handleOnChangeInput(event, "Gender") }} value={this.state.Gender}>
-                                                <option defaultValue="1">Male</option>
-                                                <option defaultValue="2">Female</option>
+                                                <option value="0">Male</option>
+                                                <option value="1">Female</option>
                                             </select>
                                         </div>
                                         <div className="user-box col-md-2">
                                             <label htmlFor="inputRoleId" className="form-labels">RoleId</label>
                                             <select id="inputRoleId" className="form-control"
                                                 name="RoleId" onChange={(event) => { this.handleOnChangeInput(event, "RoleId") }} value={this.state.RoleId}>
-                                                <option defaultValue="1">Admin</option>
-                                                <option defaultValue="2">Custom</option>
+                                                <option value="0">Admin</option>
+                                                <option value="1">Custom</option>
                                             </select>
                                         </div>
                                     </div>

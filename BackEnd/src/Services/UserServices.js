@@ -32,6 +32,7 @@ let HandleUserLogin = (email, password) => {
                             UserData.errMessage = 'ok';
                             UserData.user = user;
                         }
+
                         else {
                             UserData.errCode = 5;
                             UserData.errMessage = 'Bạn không có quyền truy cập';
@@ -143,7 +144,7 @@ let createNewUser = (data) => {
                         errMessage: 'Mật khẩu và mật khẩu nhập lại không trùng nhau !!!'
                     })
                 }
-                else{
+                else {
                     let hashPasswordFromBcrypt = await HashUserPassword(data.Password);
                     await db.User.create({
                         Email: data.Email,
@@ -159,7 +160,7 @@ let createNewUser = (data) => {
                         errCode: 0,
                         errMessage: 'Oke'
                     })
-                }     
+                }
             }
 
 

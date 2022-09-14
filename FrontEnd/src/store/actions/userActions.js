@@ -9,6 +9,11 @@ export const userLoginSussess = (userInfo) => ({
     userInfo: userInfo
 })
 
+export const userCustomerLoginSussess = (customerUser) => ({
+    type: actionTypes.USERCUSTOMER_LOGIN_SUCCESS,
+    customerUser: customerUser
+})
+
 export const userLoginFail = () => ({
     type: actionTypes.USER_LOGIN_FAIL
 })
