@@ -27,7 +27,7 @@ let HandleUserLogin = (email, password) => {
                         UserData.errMessage = 'ok';
                         delete user.Password;
 
-                        if (user.RoleId == 1) {
+                        if (user.RoleId == 0) {
                             UserData.errCode = 0;
                             UserData.errMessage = 'ok';
                             UserData.user = user;
@@ -136,21 +136,30 @@ let createNewUser = (data) => {
                 })
             }
             else {
-                let hashPasswordFromBcrypt = await HashUserPassword(data.Password);
-                await db.User.create({
-                    Email: data.Email,
-                    Password: hashPasswordFromBcrypt,
-                    FirstName: data.FirstName,
-                    LastName: data.LastName,
-                    PhoneUser: data.PhoneUser,
-                    Address: data.Address,
-                    Gender: data.Render === '1' ? true : false,
-                    RoleId: data.Role
-                })
-                resolve({
-                    errCode: 0,
-                    errMessage: 'Oke 0'
-                })
+
+                if (data.Password !== data.RepeatPassword) {
+                    resolve({
+                        errCode: 4,
+                        errMessage: 'Mật khẩu và mật khẩu nhập lại không trùng nhau !!!'
+                    })
+                }
+                else{
+                    let hashPasswordFromBcrypt = await HashUserPassword(data.Password);
+                    await db.User.create({
+                        Email: data.Email,
+                        Password: hashPasswordFromBcrypt,
+                        FirstName: data.FirstName,
+                        LastName: data.LastName,
+                        PhoneUser: data.PhoneUser,
+                        Address: data.Address,
+                        Gender: data.Gender === '1' ? true : false,
+                        RoleId: data.RoleId === '1' ? true : false,
+                    })
+                    resolve({
+                        errCode: 0,
+                        errMessage: 'Oke'
+                    })
+                }     
             }
 
 
@@ -207,6 +216,8 @@ let updateNewUser = (data) => {
                 user.LastName = data.LastName;
                 user.PhoneUser = data.PhoneNumber;
                 user.Address = data.Address;
+                user.Gender = data.Gender;
+                user.RoleId = data.RoleId;
 
                 await user.save();
 
