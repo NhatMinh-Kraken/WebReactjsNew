@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header from './Header';
-import Nav from './NavHomePage';
 
-class HomePage extends Component {
+class Section extends Component {
 
     render() {
 
         return (
-            <div>
-                <Header />
-                <Nav />
-
-            </div>
+            <section>
+                
+            </section>
         );
     }
 
@@ -29,4 +25,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(Section);
