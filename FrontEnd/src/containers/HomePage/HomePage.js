@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
-import Nav from './NavHomePage';
+import NavHomePage from './NavHomePage';
+import SliderHomePage from './SliderHomePage';
+
 
 class HomePage extends Component {
 
@@ -10,8 +12,8 @@ class HomePage extends Component {
         return (
             <div>
                 <Header />
-                <Nav />
-
+                <NavHomePage />
+                <SliderHomePage/>
             </div>
         );
     }
