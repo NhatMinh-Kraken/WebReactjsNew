@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Nav } from 'reactstrap';
 import Header from './Header';
 import NavHomePage from './NavHomePage';
 import SliderHomePage from './SliderHomePage';
@@ -13,7 +14,7 @@ class HomePage extends Component {
             <div>
                 <Header />
                 <NavHomePage />
-                <SliderHomePage/>
+                <SliderHomePage />
             </div>
         );
     }
