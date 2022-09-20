@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Nav } from 'reactstrap';
 import Header from './Header';
-import NavHomePage from './NavHomePage';
+import NavHomePage from './NavHomePage/NavHomePage';
 import SliderHomePage from './SliderHomePage';
 
 
