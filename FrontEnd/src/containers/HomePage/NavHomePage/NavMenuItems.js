@@ -40,13 +40,13 @@ const NavMenuItems = ({ items, depthLevel }) => {
         <>
           <button
             type="button"
-            className="NavHomePage-Item-Button"
+            className={dropdown ? "NavHomePage-Item-Button active" : "NavHomePage-Item-Button"}
             aria-haspopup="menu"
             aria-expanded={dropdown ? "true" : "false"}
             onClick={() => setDropdown((prev) => !prev)}
           >
             <i className={items.icon} aria-hidden="true"></i>
-            <div className="NavHomePage-Item">{items.title}{" "}</div>
+            <button type="button" className={dropdown ? "text-title active" : "text-title"}>{items.title}{""}</button>
           </button>
           <Dropdown
             depthLevel={depthLevel}
@@ -55,7 +55,9 @@ const NavMenuItems = ({ items, depthLevel }) => {
           />
         </>
       ) : (
-        <a href="/#">{items.title}</a>
+        <>
+          <button type="button" className="text-title">{items.title}</button>
+        </>
       )}
     </div >
   );

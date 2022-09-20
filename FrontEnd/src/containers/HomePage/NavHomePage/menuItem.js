@@ -1,7 +1,7 @@
 export const menuItem = [
   {
     title: "Các dòng xe",
-    icon:"fa fa-car",
+    icon:"fa fa-car mr-2",
     submenu: [
       {
         title: "Item",
