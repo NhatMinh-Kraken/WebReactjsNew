@@ -47,6 +47,7 @@ const NavMenuItems = ({ items, depthLevel }) => {
           >
             <i className={items.icon} aria-hidden="true"></i>
             <button type="button" className={dropdown ? "text-title active" : "text-title"}>{items.title}{""}</button>
+            {depthLevel > 0 ? <span>&raquo;</span> : <span className="arrow" />}
           </button>
           <Dropdown
             depthLevel={depthLevel}

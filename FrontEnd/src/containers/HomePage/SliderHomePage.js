@@ -44,10 +44,10 @@ const SliderHomePage = () => {
         <div className='slider'>
             <div className='OutlineArrow'>
                 <div className="arrow prev" onClick={prevSlide}>
-                    <i class="fa fa-angle-left"></i>
+                    <i className="fa fa-angle-left"></i>
                 </div>
                 <div className="arrow next" onClick={nextSlide}>
-                    <i class="fa fa-angle-right"></i>
+                    <i className="fa fa-angle-right"></i>
                 </div>
             </div>
 
