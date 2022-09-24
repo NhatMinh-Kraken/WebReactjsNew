@@ -1,0 +1,140 @@
+.Accessory {
+    background-color: #fff;
+
+    .Accessory-Title {
+        h3 {
+            color: #000;
+            font-size: 24px;
+            font-family: "MBCorpo Title", "DaimlerCAC-Regular", "DaimlerCACArab-Regular", serif;
+            font-style: normal;
+            font-weight: 400;
+            height: 48px;
+        }
+
+        .Accessory-Control {
+            display: flex;
+            width: 100%;
+            height: 120px;
+
+            .Accessory-Control-01 {
+                display: flex;
+                width: 100%;
+                padding: 30px;
+
+                .Buton-Accessory {
+                    align-items: center;
+                    background: #fff;
+                    border: 1px solid #bbb;
+                    right: 0;
+                    color: #000;
+                    cursor: pointer;
+                    display: flex;
+                    font-family: "MBCorpo Title", "DaimlerCAC-Regular", "DaimlerCACArab-Regular", serif;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 700;
+                    height: 100%;
+                    justify-content: center;
+                    line-height: 28px;
+                    padding: 12px 20px;
+                    position: relative;
+                    scroll-snap-align: start;
+                    transition: color .2s ease-in-out;
+                    white-space: nowrap;
+                    z-index: 15;
+                    margin-right: 1px;
+                    min-width: 184px;
+                    box-shadow: 0 0 2px 0 rgba(0, 0, 0, .1), 0 2px 4px 0 rgba(0, 0, 0, .1);
+
+                    &:hover {
+                        background-color: #e8e8e8;
+                        transition: all .4 ease-in-out;
+                        color: rgb(37, 37, 37);
+                    }
+
+                    &.active {
+                        background-color: #000;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .Accessory-Body {
+            display: flex;
+            padding-top: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+
+            .Accessory-Category {
+                padding: 0;
+                border-right: 1px solid #e8e8e8;
+                height: 500px;
+
+                .Accessory-Category-Item {
+                    .Accessory-Category-Item-Type-Energy {
+
+                        .Accessory-Category-Item-Type-Energy-title {
+                            color: #000;
+                        }
+
+                        .Category-Item-Type-Energy {
+                            display: flex;
+                            width: 100%;
+                            align-items: center;
+
+                            .Input-Type-Energy {
+                                height: 24px;
+                                width: 24px;
+                                display: flex;
+                                padding: 5px;
+                                background-color: #e8e8e8;
+                                padding-right: 5px;
+                                border: 1px solid #bbb;
+                                box-shadow: 0 0 2px 0 rgba(0, 0, 0, .1), 0 2px 4px 0 rgba(0, 0, 0, .1);
+                            }
+
+                            .Label-Type-Energy {
+                                display: flex;
+                                color: rgb(36, 35, 35);
+                                font-size: 20px;
+                                font-family: "MBCorpo Title", "DaimlerCAC-Regular", "DaimlerCACArab-Regular", serif;
+                                font-style: normal;
+                                font-weight: 400;
+                                margin-bottom: 0;
+                                margin-left: 10px;
+                            }
+                        }
+                    }
+
+                    .Accessory-Category-Item-Type {
+
+                        .Accessory-Category-Item-Type-Title {
+                            color: #000;
+                        }
+
+                        .Accessory-Category-Item-Type-Button {
+                            
+                            .Accessory-Category-Item-Button {
+                                margin-bottom: 10px;
+                                display: flex;
+                                border: 1px solid #e8e8e8;
+                                background-color: #fff;
+                                color: rgb(75, 73, 73);
+
+                                &:hover{
+                                    color: rgb(49, 152, 236);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .Accessory-Section {
+                padding: 0;
+                height: auto;
+            }
+        }
+    }
+}
